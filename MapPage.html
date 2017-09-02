@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+        <!-- Material Design Bootstrap -->
+        <link href="css/mdb.min.css" rel="stylesheet">
+    
+        <link href="css/style.css" rel="stylesheet">
+    
+    
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+      <!--Navbar-->
+      <nav class=" navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                    <a class="navbar-brand" href="#">
+                            <img src="img/pictures/PicatoNav.png" height="40" alt="">
+                        </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-3" aria-controls="navbarSupportedContent-3"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-3">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link waves-effect waves-light" href="#">Inicio <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light" href="#">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light" href="MapPage.html">Tours</a>
+                        </li>
+                        <li class="nav-item btn-group">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">Dropdown 
+                        </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink-3">
+                                <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
+                                <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
+                                <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto nav-flex-icons">
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false"><i class="fa fa-user"></i> 
+                        </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
+                                <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
+                                <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--/.Navbar-->
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: new google.maps.LatLng(-33.0472, -71.6127),
+          mapTypeId: 'roadmap'
+        });
+
+        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        var icons = {
+          parking: {
+            icon: iconBase + 'parking_lot_maps.png'
+          },
+          library: {
+            icon: iconBase + 'library_maps.png'
+          },
+          info: {
+            icon: iconBase + 'info-i_maps.png'
+          }
+        };
+
+        var features = [
+          {
+            position: new google.maps.LatLng(-33.91721, -71.6126),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-33.91539, 151.22820),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-33.91747, 151.22912),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-33.91910, 151.22907),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-33.91725, 151.23011),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-33.91872, 151.23089),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-33.91784, 151.23094),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-33.91682, 151.23149),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-33.91790, 151.23463),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-33.91666, 151.23468),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-33.916988, 151.233640),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-33.91662347903106, 151.22879464019775),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-33.916365282092855, 151.22937399734496),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-33.91665018901448, 151.2282474695587),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-33.919543720969806, 151.23112279762267),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-33.91608037421864, 151.23288232673644),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-33.91851096391805, 151.2344058214569),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-33.91818154739766, 151.2346203981781),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-33.91727341958453, 151.23348314155578),
+            type: 'library'
+          }
+        ];
+
+        // Create markers.
+        features.forEach(function(feature) {
+          var marker = new google.maps.Marker({
+            position: feature.position,
+            icon: icons[feature.type].icon,
+            map: map
+          });
+        });
+      }
+    </script>
+    
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv_d0qUNEGQsXkvv8K8W0441Bewscon7A&callback=initMap">
+    </script>
+    <!--Footer-->
+    <footer class="page-footer center-on-small-only nopadding ">
+            
+                    <!--Footer links-->
+                    <div class="container-fluid">
+                        <div class="row">
+                            <!--First column-->
+                            <div class="col-lg-3 col-md-6 ml-auto">
+                                <h5 class="title mb-3"><strong>About material design</strong></h5>
+                                <p>Material Design (codenamed Quantum Paper) is a design language developed by Google.</p>
+                                <p>Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS,
+                                    and JS framework - Bootstrap.</p>
+                            </div>
+                            <!--/.First column-->
+                            <hr class="w-100 clearfix d-sm-none">
+                            <!--Second column-->
+                            <div class="col-lg-2 col-md-6 ml-auto">
+                                <h5 class="title mb-3"><strong>First column</strong></h5>
+                                <ul>
+                                    <li>
+                                        <a href="#!">Link 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">Link 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">Link 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">Link 4</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--/.Second column-->
+                            <hr class="w-100 clearfix d-sm-none">
+                            <!--Third column-->
+                            <div class="col-lg-2 col-md-6 ml-auto">
+                                <h5 class="title mb-3"><strong>Second column</strong></h5>
+                                <ul>
+                                    <li>
+                                        <a href="#!">Link 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">Link 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">Link 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">Link 4</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--/.Third column-->
+                            <hr class="w-100 clearfix d-sm-none">
+                            <!--Fourth column-->
+                            <div class="col-lg-2 col-md-6 ml-auto">
+                                <h5 class="title mb-3"><strong>Third column</strong></h5>
+                                <ul>
+                                    <li>
+                                        <a href="#!">Link 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">Link 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">Link 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!">Link 4</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--/.Fourth column-->
+                        </div>
+                    </div>
+                    <!--/.Footer links-->
+            
+                    <hr>
+            
+                    <!--Call to action-->
+                    <div class="call-to-action">
+                        <h4 class="mb-5">Material Design for Bootstrap</h4>
+                        <ul>
+                            <li>
+                                <h5>Get our UI KIT for free</h5>
+                            </li>
+                            <li><a target="_blank" href="https://mdbootstrap.com/getting-started/" class="btn btn-primary" rel="nofollow">Sign up!</a></li>
+                            <li><a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-info" rel="nofollow">Learn more</a></li>
+                        </ul>
+                    </div>
+                    <!--/.Call to action-->
+            
+                    <!--Copyright-->
+                    <div class="footer-copyright">
+                        <div class="container-fluid">
+                            © 2015 derechos: <a href="index.html"> Picato </a>
+            
+                        </div>
+                    </div>
+                    <!--/.Copyright-->
+            
+                </footer>
+                <!--/.Footer-->
+            
+                <!-- SCRIPTS -->
+            
+                <!-- JQuery -->
+                <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+            
+                <!-- Bootstrap dropdown -->
+                <script type="text/javascript" src="js/popper.min.js"></script>
+            
+                <!-- Bootstrap core JavaScript -->
+                <script type="text/javascript" src="js/bootstrap.min.js"></script>
+            
+                <!-- MDB core JavaScript -->
+                <script type="text/javascript" src="js/mdb.min.js"></script>
+            
+                <script>
+                    new WOW().init();
+                </script>
+            
+            
+  </body>
+</html>
